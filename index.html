@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Forgotten Leftovers - Official Site</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #0f3460;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(15, 52, 96, 0.4);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(15, 52, 96, 0.6);
+            background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(135deg, #e94560 0%, #c72c41 100%);
+            transform: scale(1.05);
+        }
+
+        .content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            min-height: 500px;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            color: #0f3460;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-bottom: 3px solid #e94560;
+            padding-bottom: 10px;
+        }
+
+        .anime-header {
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .anime-header h3 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .genres {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .genre-tag {
+            background: #e94560;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: #4ecca3;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .description-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #e94560;
+            margin: 20px 0;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        .news-item, .episode-item {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #0f3460;
+            transition: transform 0.3s ease;
+        }
+
+        .news-item:hover, .episode-item:hover {
+            transform: translateX(10px);
+        }
+
+        .news-item h3, .episode-item h3 {
+            color: #16213e;
+            margin-bottom: 10px;
+        }
+
+        .date {
+            color: #666;
+            font-size: 0.9em;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .about-section {
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        .about-section p {
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: rgba(233, 69, 96, 0.8);
+            transform: scale(1.1);
+        }
+
+        .anime-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .anime-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .anime-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-color: #e94560;
+        }
+
+        .anime-card h3 {
+            color: #0f3460;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .anime-card p {
+            margin: 5px 0;
+        }
+
+        .back-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #5a6268;
+            transform: translateX(-5px);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .info-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #e94560;
+        }
+
+        .info-item strong {
+            color: #0f3460;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>The Forgotten Leftovers</h1>
+            <nav>
+                <button class="nav-btn active" onclick="showPage('home')">Home</button>
+                <button class="nav-btn" onclick="showPage('news')">News</button>
+                <button class="nav-btn" onclick="showPage('episodes')">Episodes</button>
+                <button class="nav-btn" onclick="showPage('anime-list')">Anime Database</button>
+                <button class="nav-btn" onclick="showPage('about')">About Us</button>
+                <button class="nav-btn" onclick="showPage('contact')">Contact</button>
+            </nav>
+        </header>
+
+        <div class="content">
+            <!-- Home Page -->
+            <div id="home" class="page active">
+                <div class="anime-header">
+                    <h3>The Forgotten Leftovers</h3>
+                    <span class="status-badge">ONGOING</span>
+                    <div class="genres">
+                        <span class="genre-tag">Mystery</span>
+                        <span class="genre-tag">Fantasy</span>
+                        <span class="genre-tag">Horror</span>
+                        <span class="genre-tag">Sci-Fi</span>
+                        <span class="genre-tag">Supernatural</span>
+                        <span class="genre-tag">Paranormal</span>
+                        <span class="genre-tag">Thriller</span>
+                    </div>
+                </div>
+
+                <h2>Synopsis</h2>
+                <div class="description-box">
+                    <p><strong>What would you do if someone you knew... just vanished from existence? Not dead. Not missing. Glitched out of reality.</strong></p>
+                    <p>Akari Itsuya thought last night's party was just fun and games—until strange things started happening: pens moving on their own, mysterious TV reports, and a shocking confession from a driver claiming someone glitched right before his eyes.</p>
+                    <p>Now, with his friend Kaito mysteriously disappearing, Akari must unravel a bizarre case that blurs the line between reality and the impossible. One night. One glitch. One mystery that might change everything.</p>
+                </div>
+
+                <h2>Latest Updates</h2>
+                <div class="news-item">
+                    <h3>🔥 Episode 3 Now Available!</h3>
+                    <p class="date">September 19, 2025</p>
+                    <p><strong>"A Messy House and a Forgotten Son"</strong> - The investigation continues! With Hikari's help, Akari discovers he has only 13 hours before his memories fade. The shocking phone call with Kaito's mother reveals the true horror: "I never had a son." Even family bonds are erased by the glitches. Read all three episodes in the Episodes section!</p>
+                </div>
+                <div class="news-item">
+                    <h3>📺 The Pattern Emerges</h3>
+                    <p class="date">September 20, 2025</p>
+                    <p>With three episodes released, the terrifying pattern is becoming clear: people glitch at midnight, memories fade within hours, and even loved ones forget the victims existed. What will Episode 4 reveal? Stay tuned for more updates!</p>
+                </div>
+            </div>
+
+            <!-- News Page -->
+            <div id="news" class="page">
+                <h2>Latest News</h2>
+                <div class="news-item">
+                    <h3>Episode 3: "A Messy House and a Forgotten Son" - NOW AVAILABLE!</h3>
+                    <p class="date">September 19, 2025</p>
+                    <p>The mystery deepens! Akari wakes with no memory and discovers his wife Hikari has returned. Together, they uncover a notebook revealing a 13-hour window before memories fade. When they investigate Kaito's house and call his mother, they receive a shocking response: "I never had a son." The horror of being forgotten extends even to family.</p>
+                </div>
+                <div class="news-item">
+                    <h3>Episode 2: "No One Named Kenji Morita" Released!</h3>
+                    <p class="date">September 08, 2025</p>
+                    <p>The nightmare becomes real! At exactly midnight, Akari witnesses Kenji Morita glitch out of existence during interrogation. Within moments, everyone—including Akari—begins forgetting Kenji ever existed. Only a hastily written note prevents the truth from being lost forever. The pattern is clear: midnight is when reality breaks.</p>
+                </div>
+                <div class="news-item">
+                    <h3>Meet the Characters: Akari Itsuya</h3>
+                    <p class="date">September 22, 2025</p>
+                    <p>Our protagonist is a sharp-minded detective with incredible deductive abilities. From analyzing cigarette packs to catching punches mid-air, Akari brings both intellect and physical prowess to his investigations. But can even his skills unravel a mystery that defies the laws of reality?</p>
+                </div>
+                <div class="news-item">
+                    <h3>Character Spotlight: Kenji Morita</h3>
+                    <p class="date">September 23, 2025</p>
+                    <p>The driver whose testimony changes everything. Kenji witnessed the impossible—a person glitching out of existence right before his eyes. His encounter with Akari sets the stage for an investigation that will challenge everything we know about reality.</p>
+                </div>
+                <div class="news-item">
+                    <h3>Behind the Scenes: Creating The Forgotten Leftovers</h3>
+                    <p class="date">September 28, 2025</p>
+                    <p>Creator interview reveals the inspiration behind the series and hints at shocking revelations coming in future chapters. The mystery runs deeper than anyone imagined...</p>
+                </div>
+            </div>
+
+            <!-- Episodes Page -->
+            <div id="episodes" class="page">
+                <h2>Chapters & Episodes</h2>
+                <div class="episode-item" onclick="showEpisodePage('episode-1')" style="cursor: pointer;">
+                    <h3>Episode 1: The Glitchy Incident</h3>
+                    <p class="date">Released: October 8, 2025</p>
+                    <p><strong>Synopsis:</strong> The morning after hosting a party, Akari Itsuya wakes up to find strange occurrences in his apartment—pens moving on their own, remotes falling mysteriously. When he hears a news report about a driver who hit someone who then "glitched and disappeared," Akari investigates the scene. The driver, Kenji Morita, insists the victim literally glitched out of existence. As Akari pieces together the clues, he realizes his friend Kaito is missing, and a terrifying possibility emerges: What if Kaito was the person who glitched?</p>
+                    <p><strong>Key Moments:</strong> Akari's detective skills shine as he deduces details about Kenji's accident. The mysterious moving objects hint at reality breaking down. Akari's desperate search for Kaito ends with the chilling realization that his friend may have been erased from existence.</p>
+                    <p style="color: #e94560; font-weight: bold; margin-top: 10px;">📖 Click to read the full episode!</p>
+                </div>
+                <div class="episode-item" onclick="showEpisodePage('episode-2')" style="cursor: pointer;">
+                    <h3>Episode 2: No One Named Kenji Morita</h3>
+                    <p class="date">Released: September 08, 2025</p>
+                    <p><strong>Synopsis:</strong> Akari waits at home, reading a dark-themed novel while anticipating midnight. When the news reports that Kenji Morita can't remember the incident and gets headaches trying to recall it, Akari rushes to the police station. During interrogation at exactly midnight, Kenji begins to say "I remember heading ho—" before glitching out of existence. Within moments, everyone including Akari starts forgetting Kenji ever existed. Only a hastily written note saves the truth from being completely lost.</p>
+                    <p><strong>Key Moments:</strong> The pattern becomes clear—midnight is when people glitch. Memory loss follows immediately. Akari's desperate note-taking is the only thing preventing complete erasure of the truth.</p>
+                    <p style="color: #e94560; font-weight: bold; margin-top: 10px;">📖 Click to read the full episode!</p>
+                </div>
+                <div class="episode-item" onclick="showEpisodePage('episode-3')" style="cursor: pointer;">
+                    <h3>Episode 3: A Messy House and a Forgotten Son</h3>
+                    <p class="date">Released: September 19, 2025</p>
+                    <p><strong>Synopsis:</strong> Akari wakes with no memory of yesterday's events and encounters his wife Hikari, who has just returned. When she finds his notebook, reading it triggers intense pain and bleeding—but also restores his memories. They discover he has only 13 hours before forgetting again. Breaking into Kaito's house, they find it in disarray. When they call Kaito's mother, she delivers a chilling response: "I never had a son." The glitches don't just erase people—they erase all memory of their existence, even from their own families.</p>
+                    <p><strong>Key Moments:</strong> The 13-hour memory window is revealed. Hikari becomes Akari's partner in investigation. The devastating phone call proves that even family bonds are erased by the glitches.</p>
+                    <p style="color: #e94560; font-weight: bold; margin-top: 10px;">📖 Click to read the full episode!</p>
+                </div>
+                <div class="episode-item" onclick="showEpisodePage('episode-4')" style="cursor: pointer;">
+                    <h3>Episode 4: The Other World</h3>
+                    <p class="date">Released: October 29, 2025</p>
+                    <p><strong>Synopsis:</strong> A parallel perspective reveals the truth behind the glitches. When Kenji glitches out during interrogation, he discovers he's entered "The Other World" - a realm where forgotten people exist as semi-transparent beings invisible to the living. A mysterious cop named Daichi Kurogane explains the terrifying rules: when the universe resets at midnight, those whose full names are forgotten are removed from reality. Meanwhile, Kenji and Daichi discover someone unexpected in Akari's house - Kaito, who is also trapped in this forgotten world.</p>
+                    <p><strong>Key Moments:</strong> The Other World is revealed. Daichi explains how forgetting works. The shocking discovery that Kaito has been watching from the shadows all along.</p>
+                    <p style="color: #e94560; font-weight: bold; margin-top: 10px;">📖 Click to read the full episode!</p>
+                </div>
+                <div class="episode-item" onclick="showEpisodePage('episode-5')" style="cursor: pointer;">
+                    <h3>Episode 5: Can You Last in the Other World?</h3>
+                    <p class="date">Released: November 5, 2025</p>
+                    <p><strong>Synopsis:</strong> The rules of The Other World become clearer and more terrifying. Kaito reveals that the longer someone stays in The Other World, the more they vanish from the Remembered World - and if they vanish completely, they can never return. Back in reality, Akari and Hikari discover that Hikari's parents have also disappeared. The investigation leads them to her parents' house, where they find a password-protected computer. Using his deductive skills, Akari cracks the password hint to uncover critical information about the phenomenon.</p>
+                    <p><strong>Key Moments:</strong> Kaito's warning about permanent erasure. Hikari reveals her parents disappeared. The clever password puzzle solution. Discovery of a mysterious hint about summoning people from The Other World.</p>
+                    <p style="color: #e94560; font-weight: bold; margin-top: 10px;">📖 Click to read the full episode!</p>
+                </div>
+                <div class="episode-item" onclick="showEpisodePage('episode-6')" style="cursor: pointer;">
+                    <h3>Episode 6: The Message in the Machine</h3>
+                    <p class="date">Released: November 12, 2025</p>
+                    <p><strong>Synopsis:</strong> Akari discovers detailed diary entries from Hikari's father documenting his research into "The Forgotten Leftovers." The entries reveal groundbreaking discoveries: the universe removes forgotten people at midnight, experiments on zebrafish confirm the pattern, and most critically - there's a dangerous way to summon people back from The Other World that could lead to death. An emotional confrontation occurs when Hikari accidentally mentions Akari's deceased parents. As tension builds with only 9 hours until midnight, the computer mysteriously scrolls to reveal a final chilling entry about the summoning method.</p>
+                    <p><strong>Key Moments:</strong> Discovery of the father's detailed research diary. Hikari's emotional breakdown and the painful confrontation about Akari's parents. The revelation about second names being the key. The ominous warning about a dangerous summoning ritual.</p>
+                    <p style="color: #e94560; font-weight: bold; margin-top: 10px;">📖 Click to read the full episode!</p>
+                </div>
+                <div class="episode-item" onclick="showEpisodePage('episode-7')" style="cursor: pointer;">
+                    <h3>Episode 7: Summoning from the Forgotten Leftovers</h3>
+                    <p class="date">Released: November 19, 2025</p>
+                    <p><strong>Synopsis:</strong> In a library, Akari and Hikari search desperately for answers. Hikari discovers a glowing religious book (the Quran) that triggers Akari's memories of Kaito. They find "The Forgotten Leftovers" by Cien Ayanami, a scientist who documented this parallel world in 2000. The book reveals a ritual to summon people back: use a picture to remember their full name, write it down, and read it aloud - but at the cost of either replacing them in The Other World or dying. With only 6 hours left, Hikari and Akari clash over who should perform the dangerous ritual. Hikari insists on saving her own parents, but Akari, haunted by his past, refuses to let her sacrifice herself.</p>
+                    <p><strong>Key Moments:</strong> Discovery of Cien Ayanami's book documenting The Forgotten Leftovers since 2000. The summoning ritual is revealed with its deadly consequences. The heated argument between Hikari and Akari about sacrifice. Hikari leaves to perform the ritual alone. A mysterious torn page hints at another way to enter The Other World.</p>
+                    <p style="color: #e94560; font-weight: bold; margin-top: 10px;">📖 Click to read the full episode!</p>
+                </div>
+            </div>
+
+            <!-- Anime List Page -->
+            <div id="anime-list" class="page">
+                <h2>Anime Database</h2>
+                <p style="margin-bottom: 20px; font-size: 1.1em;">Explore detailed information about various anime series. Click on any anime to learn more!</p>
+                <div class="anime-grid">
+                    <div class="anime-card" onclick="showAnimePage('forgotten-leftovers')">
+                        <h3>The Forgotten Leftovers</h3>
+                        <p><strong>Status:</strong> Ongoing</p>
+                        <p><strong>Episodes:</strong> 7</p>
+                        <p><strong>Genre:</strong> Mystery/Thriller, Horror, Sci-Fi, Fantasy, Supernatural, Paranormal, Detective</p>
+                    </div>
+                    <div class="anime-card" onclick="showAnimePage('detective-conan')">
+                        <h3>Detective Conan</h3>
+                        <p><strong>Status:</strong> Ongoing</p>
+                        <p><strong>Episodes:</strong> 1100+</p>
+                        <p><strong>Genre:</strong> Mystery, Detective, Shounen, Romance</p>
+                    </div>
+                    <div class="anime-card" onclick="alert('More anime pages coming soon!')">
+                        <h3>More Soon</h3>
+                        <p style="color: #999;">More anime pages coming soon!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Individual Anime Page: The Forgotten Leftovers -->
+            <div id="anime-forgotten-leftovers" class="page">
+                <button class="back-btn" onclick="showPage('anime-list')">← Back to Anime Database</button>
+                
+                <div class="anime-header">
+                    <h3>The Forgotten Leftovers</h3>
+                    <span class="status-badge">ONGOING</span>
+                    <div class="genres">
+                        <span class="genre-tag">Mystery</span>
+                        <span class="genre-tag">Fantasy</span>
+                        <span class="genre-tag">Horror</span>
+                        <span class="genre-tag">Sci-Fi</span>
+                        <span class="genre-tag">Supernatural</span>
+                        <span class="genre-tag">Paranormal</span>
+                        <span class="genre-tag">Thriller</span>
+                        <span class="genre-tag">Detective</span>
+                    </div>
+                </div>
+
+                <h2>Overview</h2>
+                <div class="description-box">
+                    <p><strong>What would you do if someone you knew... just vanished from existence? Not dead. Not missing. Glitched out of reality.</strong></p>
+                    <p>Akari Itsuya thought last night's party was just fun and games—until strange things started happening: pens moving on their own, mysterious TV reports, and a shocking confession from a driver claiming someone glitched right before his eyes.</p>
+                    <p>Now, with his friend Kaito mysteriously disappearing, Akari must unravel a bizarre case that blurs the line between reality and the impossible. One night. One glitch. One mystery that might change everything.</p>
+                </div>
+
+                <h2>Series Information</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>Type</strong>
+                        Original Series
+                    </div>
+                    <div class="info-item">
+                        <strong>Status</strong>
+                        Ongoing
+                    </div>
+                    <div class="info-item">
+                        <strong>Episodes</strong>
+                        7 (More coming soon)
+                    </div>
+                    <div class="info-item">
+                        <strong>First Released</strong>
+                        September 08, 2025
+                    </div>
+                    <div class="info-item">
+                        <strong>Format</strong>
+                        Anime Script 
+                    </div>
+                    <div class="info-item">
+                        <strong>Runtime</strong>
+                        ~15-20 min per episode
+                    </div>
+                </div>
+
+                <h2>Main Characters</h2>
+                <div class="news-item">
+                    <h3>Akari Itsuya - The Detective</h3>
+                    <p><strong>Role:</strong> Protagonist</p>
+                    <p>A brilliant detective with exceptional deductive abilities and sharp observational skills. Akari can piece together complex scenarios from minimal clues—from determining accident details at a glance to analyzing evidence in his home lab. He combines intellect with unexpected physical prowess (catching punches mid-air) and has a calm, methodical approach to even the most bizarre cases. Despite being a smoker who acknowledges its harm, he uses it as part of his investigative ritual. Akari's defining trait is his relentless pursuit of truth, no matter how impossible it seems. When he remembers the glitches, he experiences intense headaches and bleeding, but his determination never wavers. He reads dark-themed books like Haruki Murakami's "Hard-Boiled Wonderland and the End of the World."</p>
+                </div>
+                <div class="news-item">
+                    <h3>Hikari - The Detective's Wife</h3>
+                    <p><strong>Role:</strong> Supporting Character / Partner</p>
+                    <p>Akari's wife who serves as both his emotional support and investigative partner. Hikari is observant and caring, noticing details like the cigarettes on the floor that indicate Akari couldn't solve a case. She scolds him about smoking and his habit of mumbling while walking. Despite her playful complaints, she's deeply committed to helping Akari, even in the face of terrifying supernatural phenomena. She recently returned from visiting her parents. Hikari's presence grounds Akari and helps him piece together fragmented memories.</p>
+                </div>
+                <div class="news-item">
+                    <h3>Kaito - The Disappeared Friend</h3>
+                    <p><strong>Role:</strong> Supporting Character (Missing)</p>
+                    <p>Akari's friend who attended the party and was supposed to stay overnight due to the rain. Kaito is the catalyst for the entire mystery—his disappearance (or "glitching") from reality sets Akari on a path to uncover the truth. Even his own mother claims she never had a son, suggesting the glitches erase not just the person but all memories and records of their existence. His house is found in a mess, and his last call with his mother was 5 months ago.</p>
+                </div>
+                <div class="news-item">
+                    <h3>Kenji Morita - The Witness Who Became a Victim</h3>
+                    <p><strong>Role:</strong> Key Witness (Glitched)</p>
+                    <p>A driver who first reported seeing someone "glitch out of existence" after hitting them with his car. By the next day, Kenji himself began forgetting the incident, experiencing headaches when trying to remember. At exactly midnight during police interrogation, Kenji glitched out of existence while saying "I remember heading ho—" He became a victim of the very phenomenon he witnessed. After his disappearance, everyone forgot he existed, proving the pattern: people glitch at midnight and are erased from all memories.</p>
+                </div>
+            </div>
+
+            <!-- Individual Episode Pages -->
+            <div id="episode-1" class="page">
+                <button class="back-btn" onclick="showPage('episodes')">← Back to Episodes</button>
+                
+                <h2>Episode 1: The Glitchy Incident</h2>
+                <p class="date">Released: October 8, 2025</p>
+                
+                <div class="description-box" style="white-space: pre-line; font-family: 'Courier New', monospace; line-height: 1.8;">What would you do if someone you knew was erased from existence — not dead, but glitched out of reality?
+
+(Scene 1: In a house)
+
+Akari Itsuya stands up from the bed.
+
+Akari looking around his room, calm voice: "What happened here?"
+
+Flash back of yesterday night:
+
+&lt;&lt;&lt;&lt;&lt;
+Akari drinking juice with his friend - Kaito
+
+Kaito raising the cup: "That was fun. I never knew that you are the type that makes parties Akari–kun!"
+
+Akari: "I am glad you had fun"
+
+&lt;&lt;&lt;&lt;&lt;
+
+Akari scratching his head: "What was his family name again? Ehh I will ask him later."
+
+Akari stands up and heads to the living room. The living room is in a mess from yesterday's party; plastic cups on the floor everywhere, the desk is missed up, some papers are on the floor.
+A pen on the disk moves and falls on the ground. Akari notices the pen and puts it back on the desk.
+
+Akari confused: "how did that pen move by itself?" Notices the window and closes it "just air" then goes to get the tools for cleaning the living room. The pen then moves and falls again.
+Akari gets the tools from the kitchen and gets back to the living room and starts cleaning. The remote suddenly falls from on the couch opening the T.V.
+
+Akari staring curiously on the remote: "Something is off.."
+
+T.V. News: "yesterday around midnight, someone got hit by a car, the cops found who hit the victim..but never found the victim!"
+
+Akari hears the news ignores the remote and says curiously: "That's an interesting new case!"
+
+He stands up, wears his coat, and heads outside.
+
+[ Scene 2: At the crime scene ]
+
+A black Ford, a smoking driver, and no trace for a victim.
+Akari looking around finds a spot where there is some blood on the ground.
+
+Akari: "So, what did you see? How did you know you crashed or hit something?"
+
+The driver: "I was just driving‒"
+
+Akari interrupting him, talking in a fast tone: "you where driving at night while its raining and you are smoking in the dark and your headlight was broken from an accident so you couldn't turn it on, that sounds a boring case now..."
+
+The driver (Kenji Morita): "H.How did you..?" Akari is already walking away, he shouts in a bit of hesitation "...Wait! The person I hit with my car...Just glitched and disappeared!"
+
+Akari paused midway, his expressions gets more serious and sharp.
+
+Akari facing him: "Can you..repeat what you said?"
+
+The driver in hesitation: "The person I hit with my car...just glitched and disappeared"
+
+Akari pulls out his cigarettes and lights it up using a lighter with a serious expression on his face: "Now, that's what I call a case"
+
+Akari exhales smoke: "Smoking damages brain cells..and yet here I am..smoking"
+
+Akari: "what's your name again?"
+
+The driver: "My name is Kenji Morita."
+
+Akari: "Morita‒san, can you show me your pack of cigarettes?"
+
+Kenji: "w.what?"
+
+Akari with a serious tone: "Just show it without hesitation!"
+
+Kenji pulling out his pack, hesitantly: "s.sure"
+
+Akari grabs it, and starts observing it: "hmm. I will take this with me. Its fine right?"
+
+Kenji: "sure."
+
+Akari walking away: "Okay. Now you will go to the police to interrogate you, and yeah..bye"
+
+Kenji shouts in rage and frustration: "what? Thats all?! Do you think I was joking when I said that the man glitched?! I..I saw him with my eyes!"
+
+Akari waving his hand while walking away: "No. Dont worry! I will continue investigating and will tell you the results!"
+
+Kenji lunges forward, swinging a punch in frustration: "Are you making fun of me?!"
+
+Akari catches his fist mid–air with one hand, his sharp gaze cutting through Kenji's rage: "Do you think I am not taking my job seriously? If I took the case, then I will work on it. Calm down. Better for you."
+
+Kenji pulls back and the police take him away.
+
+[ Scene 3: At home ]
+
+Akari: "I dont need the cops lab, I got my own here in my apartment."
+
+Akari starts searching for drugs in the cigarettes: "There should be a drug here somewhere! He didn't drink or eat anything before that! He was only smoking!"
+
+He throws the pack away furiously after examining it under a microscope without finding anything useful.
+
+Akari: "That doesn't make any sense! There has to be something!"
+
+Akari takes a deep breath: "I shall calm down first. What about remembering what happened yesterday?"
+
+Flashback:
+
+&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+Kaito: "Is it fine if I slept here tonight?"
+
+Akari: "Yeah, sure why not?"
+
+Kaito: "thanks. Its just rainy outside."
+
+Akari: "I sleep before midnight because I usually have work"
+
+Kaito: "sure"
+&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+
+Akari: "there is something wrong..." putting his hands on his head "...the more I try to remember the more my head hurts"
+
+Akari pulls out his phone and calls Kaito. Then he notices Kaito's phone on the couch.
+
+Akari: "wait...this whole thing happened in midnight.."
+
+Akari leaves the apartment rushing outside.
+
+[ Scene 4: Kaito's home ]
+
+Akari knocking on Kaito's door but no one opens. He breaks the door and starts searching for Kaito everywhere in the house. He doesn't find him and heads back home.
+
+[ Scene 5: At home ]
+
+Akari: "What if..the person who glitched in that accident and disappeared..was Kaito?"
+Akari checks his watch. Its 11:30 pm.
+Akari lights up his cigarettes with a serious face: "I will find out this night what happened."</div>
+            </div>
+
+            <div id="episode-2" class="page">
+                <button class="back-btn" onclick="showPage('episodes')">← Back to Episodes</button>
+                
+                <h2>Episode 2: No One Named "Kenji Morita"</h2>
+                <p class="date">Released: October 15, 2025</p>
+                
+                <div class="description-box" style="white-space: pre-line; font-family: 'Courier New', monospace; line-height: 1.8;">What will you do if you witnessed someone glitch out of reality and you just start forgetting him, and when you ask about him everyone claims they don't remember such a person?
+
+[ Scene 1: At home ] ‒ Time: 11:40 pm
+
+Akari sitting on the couch reading "Hard-Boiled Wonderland and the End of the World" a book by Haruki Murakami, on a shelf beside him a cup of coffee.
+
+Akari: "is what that driver said actually real? I cant find a logical explanation though..."
+
+takes a sip of the coffee.
+
+Akari: "In that incident there wasn't much blood on the ground. Maybe the victim is still alive."
+
+11:50 pm
+
+Akari closes the book and opens the T.V.
+
+Akari checking the watch: "I guess its almost time. 10 minutes."
+
+T.V. News: "The driver, Kenji Morita, who was involved into yesterday's incident was interrogated by the police. Kenji Morita claims that he doesn't remember driving at this late and he gets a headache whenever trying to remember the incident..."
+
+Akari closes the T.V.
+
+Akari serious look: "wait what?"
+
+Akari stands up, wears his coat and rushes leaving the house. The T.V. opens again.
+
+[ Scene 2: The police station ] ‒ Time: 11:55
+
+2 cops talking in the hallway, outside the interrogation room.
+
+Cop1 scratching his head in confusion: "man, this driver just needs a therapist at this point"
+
+Cop2: "yeah, he was probably drunk or something!"
+
+Cop1 laughing: "yeah I agree!"
+
+Cop2: "or maybe he was just lying!"
+
+a cop leaving the interrogation room with a serious face.
+
+Cop3: "If he was lying or needed a therapist then Akari wouldn't have taken this case seriously. There is something wrong going on."
+
+Cop2: "do you actually believe that guy? Like how can someone glitch out of reality thats so illogical!"
+
+Cop1: "Yeah. Also just so you know detective Akari believes that there is always a logical explanation so he is probably searching for clues now."
+
+Akari asks: "Where is the interrogation room?"
+
+Cop2: "speak of the devil.."
+
+Cop1: "Why are you here?"
+
+Akari: "I am here because I am a detective and my job is to investigate. Now can you tell me where is the interrogation room?"
+
+Cop3 pointing at the room behind him: "here. We asked him, he just cant remember anything about the incident."
+
+Akari enters the room.
+
+Akari: "Kenji-san, don't you remember telling me that you saw the guy glitch?!"
+
+Kenji: "I..I don't remember..I barely recognize you.."
+
+Akari talking to the cop beside him: "did anything happen made him lose his memory?"
+
+Cop4: "No. There is nothing wrong with his brain. We sent him to a doctor, he said its all fine."
+
+Akari checks the watch, its 11:59 pm.
+
+Akari: "its almost midnight.."
+
+Kenji: "sorry, but I dont remember anything related to this incident. I remember what happened before it though."
+
+Akari: "what happened? What can you remember exactly?"
+
+Kenji: "I remember heading ho‒"
+
+Kenji starts glitching out then suddenly he disappears. Akari and Cop4 was shocked for a moment, then there shocked expressions slowly fades.
+
+Akari: "wh.what? I.I remember there was someone sitting in front of me just now on that chair.."
+
+Cop4: "Yes. I think..was there?..Someone..?"
+
+Akari: "Yes. There was! A guy sat infront of us here! He was going to say something! Then he suddenly disappeared! Don't you remember?"
+
+Cop4: "Who are you talking about? Sir, there was no one here."
+
+Akari: "th.there was..what did just happen?"
+
+Cop4: "Sir, can you leave the room? You shouldn't be here."
+
+Akari leaves the room and asks the 3 cops who where still standing and chatting outside the room.
+
+Akari: "Hey, wasnt there someone inside just now? I don't remember his name but there was someone inside this room, we where interrogating, right?"
+
+Cop2: "What are you talking about? There was only you and the other cop inside"
+
+Akari heads back home
+
+[ Scene 3: At home ] ‒ 12:05 am
+
+Akari enters home and finds the T.V. on, he closes it.
+
+Akari: "I remember closing this before leaving though..do I?"
+
+Akari gets a notebook and writes down:
+
+"there was someone in the interrogation room, he said "I remember heading ho‒" then just glitched out..I need to investigate this case."
+
+Then lays down on bed, staring at the ceiling.
+
+Akari: "I guess..I cant find a logical explanation for this..but i would never give up.."
+
+then he falls asleep.
+
+After credits...
+
+[ Scene 4: At home ]
+
+Akari waking up..
+
+Akari: "Why did I stay awake till midnight yesterday again?"</div>
+            </div>
+
+            <div id="episode-3" class="page">
+                <button class="back-btn" onclick="showPage('episodes')">← Back to Episodes</button>
+                
+                <h2>Episode 3: A Messy House and a Forgotten Son</h2>
+                <p class="date">Released: October 22, 2025</p>
+                
+                <div class="description-box" style="white-space: pre-line; font-family: 'Courier New', monospace; line-height: 1.8;">How would you feel if you were a detective investigating a case with your wife? If you ever had to break into your friend's house to investigate his disappearance, would you do it?
+
+[ Scene 1: at home ] ‒ 10:00 am
+
+Akari waking up..
+
+Akari: "Why did I stay awake till midnight yesterday again? ahh I have a headache, I will go eat break fast"
+
+Akari stand up from bed, heads to the kitchen and looking for something in the refrigerator to eat, but then he finds it empty.
+
+Akari: "Looks like I will need to go to the convenience store and buy some stuff"
+
+he wears his coat, a white cap and heads outside.
+
+[ Scene 2: In the street ] ‒ 10:10 am
+
+Akari walking back from the convenience store, while holding a plastic bag that has some stuff for breakfast.
+
+Akari mumbling while walking: "I remember that yesterday..I was sitting the whole day watching T.V. and reading the book "Hard-Boiled Wonderland and the End of the World"...there is something off though‒"
+
+A girl stood infront of him and says: "Didn't I tell you to stop mumbling while you're walking? And are you still reading dark themed books, Akari‒kun?'
+
+Akari raising his head: "who are‒?" realizes when he sees her face "Oh..Hikari‒chan."
+
+Hikari pouts more: ""who are you?" You cant recognize your wife? what a shame!"
+
+Akari with stressed expressions: "Sorry, Hikari‒chan. I am tired recently for some reason."
+
+Hikari starts walking beside him: "I told you to stop smoking but you don't listen to me. I told you smoking damages brain cells..and yet here you are..buying a pack of ciggerates."
+
+Akari recalls himself saying the sentence to someone "Smoking damages brain cells.." then his head hurts.
+
+Hikari starts worrying as Akari puts his hands on his head: "Are you alright?"
+
+Akari: "I am fine. Just a headache."
+
+Hikari: "don't worry I will make breakfast for you today!"
+
+Akari: "Oh yeah. How was the visit?"
+
+Hikari: "what visit?"
+
+Akari: "you forgot, you went to visit your parents"
+
+Hikari with a pale face: "Oh yeah that. They are alright."
+
+Akari and Hikari arrives to the appartment, Hikari's bags are in front of the door, Akari gets the key out of his pocket opening the door.
+
+Hikari: "Don't make me wait here for you alone again, okay?"
+
+Akari: "I didn't take long. It was just five minutes!"
+
+Hikari crossing her arms: "I dont care how long you took. You made me wait."
+
+Akari: "fine. sorry"
+
+opens the door, she heads to the kitchen to make for him breakfast, he sits on the couch and opens the T.V.
+
+Hikari wears an apron she brought with her and starts cooking something for Akari, while talking to him from the kitchen: "What was your most recent case you have worked on?"
+
+Akari: "I..I don't remember..I think I was working on something yesterday.."
+
+Hikari: "Did this case include cigarettes?"
+
+Akari: "what?"
+
+Hikari: "some cigarettes are on the floor, your microscope is broken on the floor, looks like you couldn't solve it till now..you never get furious on anything unless it was not solving a case."
+
+Akari remembers:
+
+&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+
+Akari starts searching for drugs in the cigarettes: "There should be a drug here somewhere! He didn't drink or eat anything before that! He was only smoking!"
+
+He throws the pack away furiously after examining it under a microscope without finding anything useful.
+
+Akari: "That doesn't make any sense! There has to be something!"
+
+&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+
+Akari gets a strong headache that makes him scream in pain.
+
+Hikari: "Are you alright?!" she rushes outside of the kitchen to check Akari.
+
+Hikari: "what happened?"
+
+Akari: "I don't know but..whenever I try remembering something from yesterday it just hurts.."
+
+Hikari: "Its fine. We will solve this case together."
+
+Akari: "thanks"
+
+Hikari stands up and heads back to the kitchen.
+
+[ Scene 3: At home ] ‒ 11:00 am
+
+Both sitting in Akari's bedroom after eating breakfast. Akari on the bed and Hikari on a chair.
+
+Hikari: "so, lets see what we have here to help you remember what happened yesterday."
+
+Hikari starts looking around the room then she finds a small notebook written on it "Notes". she opens it to find written on the first page:
+
+"date: 8/6/2025
+there was someone in the interrogation room, he said "I remember heading ho‒" then just glitched out..I need to investigate this case."
+
+Hikari: "hey, maybe this will help. according to the date this was written yesterday."
+
+Hikari shows Akari the note, when he reads it he remembers everything happened yesterday and gets a strong headache. he screams in pain even harder and he clenches his teeth to his lips that they start bleeding.
+
+Hikari gets a tissue and wipes the blood: "Are you alright?"
+
+Akari with full confidence: "Yes. I am even better than alright! I got 13 hours till I forget again. Its my chance!"
+
+He rushes outside, wears his coat and a black cap, Hikari rushes after him.
+
+Hikari stops him: "Wait! Where are you going and what are you planning to do?"
+
+Akari: "I will tell you on the way"
+
+[ Scene 4: At Kaito's home ] ‒ 11:19 am
+
+Akari break in to Kaito's house and start looking for clues. The house is in a mess.
+Hikari finds a picture on a desk of Kaito standing beside his mother in a park.
+
+Hikari: "I think we should talk to his mother. Do you know where she is?"
+
+Akari: "No, but I can find this out using this"
+
+He pulls out Kaito's phone.
+
+Hikari: "do you even know this guy's name?"
+
+Akari in confidence: "Yes! I obviously do! His name is..his name is.." (stunned)"I..I cant remember..his name.."
+
+Akari starts checks the most recent calls he had with his mother which was about 5 months ago.
+
+Hikari standing beside him: "wow. 5 months?! she probably forgot about him!"
+
+then she smirks as Akari starts realizing while mumbling "forgetting.."
+Then he calls her.
+
+Kaito's mother: "Hello? Who are you?"
+
+Akari: "I am your son's friend..about your son‒"
+
+Kaito's mother: "what? I never had a son."
+
+after credits...
+
+[ Scene 5: At Kaito's home ] ‒ 12:00 pm
+
+Akari: "You..you dont remember?"
+
+Kaito's mother: "what do you want?"
+
+He hangs up.
+
+Hikari: "so? What do we do now?"
+
+Akari: "We will head back to where the incident happened. I think we might find some clues there. We got 12 hours"
+
+Akari leaves the house while Hikari follows him with a pale face.</div>
+            </div>
+
+            <div id="episode-4" class="page">
+                <button class="back-btn" onclick="showPage('episodes')">← Back to Episodes</button>
+                
+                <h2>Episode 4: The Other World</h2>
+                <p class="date">Released: October 29, 2025</p>
+                
+                <div class="description-box" style="white-space: pre-line; font-family: 'Courier New', monospace; line-height: 1.8;">What will you feel if you where forgotten by everyone in the universe? No one remembers your name not even your family. How will you feel if you where invisible to others including your friends?
+
+[ Scene 1: The interrogation room (from Episode 2: No One Named "Kenji Morita") ] —11:59 pm
+
+Akari: "its almost midnight.."
+
+Kenji: "sorry, but I dont remember anything related to this incident. I remember what happened before it though."
+
+Akari: "what happened? What can you remember exactly?"
+
+Kenji: "I remember heading home"
+
+Akari and Cop4 stunned
+
+Kenji confused: "why these sudden expressions, I was just heading home"
+
+Akari: "wh.what? I.I remember there was someone sitting in front of me just now on that chair.."
+
+Kenji: "Yes! And I am still here!"
+
+A cop passes through the wall, with a pale, hopeless face: "They can't hear you or see you. You are forgotten."
+
+In the background: Cop4: "Yes. I think..was there?..Someone..?"
+
+Kenji: "who are you? And what do you mean? And how the heck did you just..casually pass through that solid wall?!"
+
+In the background: Akari: "Yes. There was! A guy sat infront of us here! He was going to say something! Then he suddenly disappeared! Don't you remember?"
+
+The cop: "I am Daichi Kurogane. I used to work here as a cop. Till one day, I realized that no one can see me and I have disappeared from this world. Or rather call it.."The Remembered World".
+
+In the background: Cop4: "Who are you talking about? Sir, there was no one here."
+
+Kenji: "but why?"
+
+In the background: Akari: "th.there was..what did just happen?"
+
+Daichi: "at first, i didn't know why, but after watching someone invistegate into this, I realized that it all happened because its just simply no one remembered my full name. So when the universe reset it just removed me out since I am no more needed. Because..no one remembers me, then who will benefit from me?"
+
+In the background: Cop4: "Sir, can you leave the room? You shouldn't be here."
+
+Kenji goes silent for a moment trying to process the situation he is in.
+
+Kenji: "when does the universe reset anyway? And why?"
+
+Daichi: "the universe resets at exactly 12: 00 am where it picks the people who are forgotten and puts them in the "Lost Ones World" L.O.W. or some people call it "The Forgotten Leftovers" T.F.Ls. when you get dragged to that place everyone forgets everything about you and would never know you existed. Your mother, father, best friend, your loved ones and everyone."
+
+Kenji: "but I noticed the cops forgot in minutes while Akari didn't forget till now"
+
+Daichi: "it depends on multiple factors, like how close that person was to you, how much he or she wants to remember you, how long have he forgot your full name, and how strong is his memory... Though the difference stays small...Akari Itsuya..I think we need to follow him."
+
+Kenji: "we will go to that detective's house?!"
+
+Daichi: "yes. Will you come or stay here?"
+
+Kenji: "n.no, coming!"
+
+Kenji follows Daichi to exit the police station heading to Akari's house.
+
+[ Scene 2: In the street ]
+
+Kenji notices how his body is semi-transparent
+
+Kenji: "why is my body..like a ghost, semi—transparent like this?
+
+Daichi ignores his question, passing the road.
+
+Kenji: "w.what are you doing?! The traffic is red light!"
+
+A car passes through Daichi while he's walking.
+
+Kenji confused: "wh..whaaa—?"
+
+Daichi waits at the other side: "come on lets go!"
+
+Kenji passes the street and follows Daichi
+
+Kenji: "can we just pass through all objects?"
+
+Daichi: "not all. You can affect some objects actually."
+
+Kenji: "really?"
+
+Daichi: "you can only affect objects that are less than a 100g"
+
+Daichi: "and in some cases "Liminal Overlap Windows" could happen. Where you may appear in the remembered world in less than a second then glitch out again"
+
+Kenji: "oh i remember now the incident I had! I crashed into someone who suddenly appeared the moment I crashed him and disappeared instantly right after getting injured. Was that a..Liminal Overlap Window thing?"
+
+Daichi: "oh yeah I think...we will arrive soon. This is his office" pointing at a house
+
+After credits....
+
+Kenji: "is his office is just his house?"
+
+Daichi: "yeah"
+
+Daichi: "so lets go"
+
+Kenji: "wait..can we just enter his house that casually without his permission?"
+
+Daichi: "how can you even ask his permission?"
+
+Kenji: "fair point"
+
+They pass through the door and see Kaito sitting on the couch watching T.V.
+
+Daichi pulling out a knife: "who are you and what are you doing here?"</div>
+            </div>
+
+            <div id="episode-5" class="page">
+                <button class="back-btn" onclick="showPage('episodes')">← Back to Episodes</button>
+                
+                <h2>Episode 5: Can You Last in the Other World?</h2>
+                <p class="date">Released: November 5, 2025</p>
+                
+                <div class="description-box" style="white-space: pre-line; font-family: 'Courier New', monospace; line-height: 1.8;">What do you think will happen if someone from the Other World got stabbed by a knife? Will it affect them? Will they bleed? What do you think will happen if someone stayed for so long in the Other World?
+
+[ Scene 1: At home ] ‒ Time: (Past) 12: 30 am
+
+Daichi pulling out a knife: "who are you and what are you doing here?"
+
+Kaito stands up while holding popcorn: "A visitor. Nice."
+
+Daichi tries to stab him but Kaito dodges.
+
+Kaito: "calm down. I am not here to—"
+
+tries to stab him again but Kaito holds the knife with both hands, causing it to bleed but strangely healing fast: "Stop!" Kaito pulls the knife, breaks it and throws it away: "I am Akari's friend!"
+
+Kenji confused: "wait..how did you heal that fast?"
+
+Kaito: "In this world, knives aren't really what you should be scared of..."
+
+Kenji: "what do you mean?"
+
+Kaito with dark expressions: "what you should worry about...is how much you will last!"
+
+[ Scene 2: The crime scene (from episode 1) ] - Time: (Present) - 9/6/2025 - 12: 30 pm
+
+Hikari: "so here is where that incident you talked about happened."
+
+Akari: "yes. There is not much blood here."
+
+Hikari: "whoever was the victim who disappeared..he's still alive. The amount of blood on the ground isn't enough to die."
+
+Akari: "I know. We should go to the police station and ask about the sample of blood they took, we can use it as a clue to find the victim."
+
+Hikari: "lets go."
+
+[ Scene 3: At the police station ] - Time: (Present) 12: 45 pm
+
+cop1: "oh..after analyzing the samples of blood, we got strange results; we couldn't find someone  who existed with such blood"
+
+Akari walks away while Hikari follows him
+
+Hikari: "What does that mean?"
+
+Akari with low but sharp voice: "it sounds like what I expected is true. Whoever glitches out of this world, everything related to him just disappears"
+
+Hikari smugs: "oh yeah, by the way, what happened to that friend you had?"
+
+Akari: "what?"
+
+Hikari confused: "that friend we left his house hours ago"
+
+Akari remembers: "ohhh.." in shock "Oh no! I am starting to forget!" With a serious tone "we need to rush! At this rate, I won't be able to solve this case!"
+
+then starts walking faster
+
+Hikari: "where are we going?"
+
+Akari pauses for a moment in silence
+
+Hikari: "Akari-kun? Are you alright?"
+
+Akari: "hey...did you..actually get to see your parents?" 
+
+Hikari hesitant: "wh.what do you mean, Akari-kun? I.I obviously did"
+
+Akari: "stop hiding it. Your face was pale when I mentioned the visit"
+
+Hikari: "I guess I can't hide it from a smart detective like you..." her face goes pale "...They disappeared from home. And when I asked the neighbors they said "there was no one living here""
+
+Akari: "Then?"
+
+Hikari: "I started investigating in this and...while I was watching the news..."
+
+flashback:
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+
+T.V. News: "yesterday around midnight, someone got hit by a car, the cops found who hit the victim..but never found the victim!"
+
+Akari in the background looking around at the crime scene
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+
+"...I saw you there and thought of that you may help finding out, what's going on"
+
+Akari: "I see...then why not visit your parents' place, I wanna check it out"
+
+Hikari: "sure."
+
+ [ Scene 4: At home ] - Time: (Past) 9/6/2025 :- 12:40 am - 12 hours ago.
+
+Kenji curiously: "What do you mean?" 
+
+Kaito: "In this world, the longer you stay the more you start vanishing from the "Remembered World", and if you totally vanish, you can never get back to be remembered again."
+
+Kenji: "wait...so there is a way to get back to the "Remembered World", right?"
+
+Kaito: "There is..I am Kaito Shiranami. And I am going to help you finding out how to get back to the "Remembered World""
+
+[ Scene 5: Hikari's parents' house ] - Time: (Present) 2:00 pm
+
+The house is clean and neat. Akari starts looking around for clues in the house, then he finds a computer but locked with a password.
+
+Akari: "Hey, Hikari! Do you know the password?"
+
+Hikari: "and how would I know?"
+
+Akari: "That just makes it harder."
+
+Akari finds some sticky notes on the back of the computer.
+
+Akari: "hey, do your parents have some type of "Dementia"?"
+
+Hikari: "Oh..I think my father forgets stuff faster than normal. I guess its because of age"
+
+Akari: "did you ever hear this quote before? "Those who forget too quickly, get forgotten too quickly as well""
+
+Hikari: "No, I didn't hear about it and I think the person who said it up didn't hear about it himself"
+
+Akari: "Your father probably writes the password of the computer on a note"
+
+Hikari: "and where can we find this note?"
+
+Akari looking around the computer: "its probably somewhere visible since if he hid it he wouldn't remember where it is as well..."
+
+ Akari scans the desk, notices dust marks on the keyboard, lifts it, and finds the sticky note underneath..
+
+after credits...
+
+[ Scene 6: Hikari's parents' house ] - Time: (Present) 2:15 pm
+
+the note written on it:
+
+"Computer password hint: Hello, Kari &lt;8965632"</div>
+            </div>
+
+            <div id="episode-6" class="page">
+                <button class="back-btn" onclick="showPage('episodes')">← Back to Episodes</button>
+                
+                <h2>Episode 6: The Message in the Machine</h2>
+                <p class="date">Released: November 12, 2025</p>
+                <p style="background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107; margin-bottom: 20px;"><strong>⚠️ Content Warning:</strong> This episode contains themes of loss, parental absence, and emotional distress. Viewer discretion is advised.</p>
+                
+                <div class="description-box" style="white-space: pre-line; font-family: 'Courier New', monospace; line-height: 1.8;">How will you feel if your parents who loved you glitched out of reality? How will you feel if you are about to forget your own parents 10 hours? How will they feel?
+
+[ Scene 1: Hikari's parents' house ] - Time: (Present) 2:40 pm
+
+Akari sitting on the chair wondering.
+
+Hikari: "hey. Hey Akari! From Earth to Akari" shouts in his ears "AKARI!!"
+
+Akari falls with the chair pulling a picture of Hikari's family: "Aw, what?!"
+
+ The frame slips from Akari's hand. When it hits the floor, a hairline crack crawls across the glass — splitting Hikari's image from her parents.
+
+Hikari: "hey! You broke that picture!"
+
+Akari: "its your fault for shouting in my ears!"
+
+Hikari: "you zoned out, did you solve this hint?"
+
+Akari: "oh..its clear..type HikariILU"
+
+Hikari: "what? Is it that simple? What does it mean anyway?"
+
+Akari: "oh. In "Hello, kari" if you take the "H" and put it beside "kari" with an "i" it will be "Hikari". It makes sense since its your parents. Anyway if you tried writing the numbers "8965632" on the computer's keyboard, it will look like a "3". Many people used to use the sign "&lt;3" to symbolize a heart before emojis existed. So the password means that he loves you. And if you take the first letters of the sentence "I Love You" it will be "ILU""
+
+Akari gets to the computer and starts typing the password. The computer opens.
+
+Akari while moving the mouse clicking on the "File Explorer": "so lets see what we have here..."
+
+Akari finds a Word written on it " notes, date: 1/6/2025" he opens the Word while saying: "I think I found something useful!.." looking around him "Hikari?..wait..what was her second name?" he stays silent for a moment thinking, then he realizes something "wait..whoever disappeared..I got a theory..wait where is Hikari?" then he starts worrying, and panicking.
+
+Akari shouts: "HIKARI!"
+
+then he starts seeing everything around him in black and white vision, starts trembling, feeling that he is almost losing his mental stability, but interrupts him, suddenly he hears a sound of sobbing from a nearby room, his expressions fade, he rushes to the room to find Hikari covering herself in a white blanket: "oh Hikari-chan, you are here"
+
+He goes sits on the bed beside her: "Hikari. Crying won't bring them back. If you want them back you need to solve this case. Crying will just waste our time. We have 9 hours before midnight, and we will probably start forgetting even before it."
+
+Hikari shouts: "You don't understand how i feel since you don't have parents!..oh" then she goes silent for a moment realizing what she said.
+
+Akari's face goes pale. He stands up: 'I.I will be in the living room reading your father's notes." 
+
+Hikari: "S.sorry..I.I didn't mean to mention that topic..."
+
+Akari: "I.Its fine. You are technically right anyway." 
+
+then he leaves the room with a pale face.
+
+Hikari regretting what she did: "what the hell did I do?! He came to calm me down I just shouted at him mentioning the most sensitive topic for him?!"
+
+[ Scene 2: In the living room ] - Time: (Present) 3:00 pm
+
+Akari sitting in front of the computer with serious expressions. 
+
+Akari: "What the heck?!" 
+
+The Word is empty pages.
+
+Hikari appears behind him, standing while keeping her distance: "He wrote it with white font color"
+
+Akari selects everything in the word then text appears with the blue background. He changes the color to black.
+
+"1/6/2025
+
+I noticed something weird going on where my pen moved alone without any logical cause, maybe I was hallucinating?
+
+2/6/2025
+
+No I wasn't! Before I sleep yesterday I was sure I closed the T.V. I woke up and found it on! Also my small note was placed somewhere else.
+
+3/6/2025
+
+I believe there is some Other World, I am going to call it "The Forgotten Leftovers" where forgotten stuff go there by the universe. The universe cleans up. My prove is that I went to meet my friend but he glitched out in front of me.
+
+4/6/2025
+
+I believe that the universe removes our memories about those people who glitch out and it all happens at midnight since I don't remember having a friend. 
+
+I made a small experiment on a zebrafish by separating it from its pears and after about 10 hours it glitched out of existence, that means anyone who gets forgotten the universe sends him to the Other World.
+
+5/6/2025
+
+I think if it was like that my friend wouldn't have glitched out of reality though, so I have a theory since I couldn't remember my friend's second name before he glitch that its about the second name not your first name."
+
+Akari whispering to himself: "That's my exact theory." 
+
+Akari stands up.
+
+Hikari: "What are you planning to do?"
+
+Akari: "I believe that there is a way to get them back but we need to visit the library first for some books" 
+
+Akari leaves heading to a nearby library while Hikari follows him still keeping her distance.
+
+[ Scene 3: At home ] - Time: 1:00 am (Past)
+
+Kenji drinking coffee with Kaito, while Daichi left.
+
+Kenji: "so..how can you go back to the "Remembered World" ?"
+
+Kaito: "what?"
+
+Kenji: "You said there is a way right?"
+
+Kaito: "yes I did but..." walking toward Akari's bedroom, staring at Akari sleeping "...won't it be fun watching the detective solve the case?"
+
+Kenji: "what? Why don't you just tell us the way to go back?"
+
+Kaito: "chill. If the way was that easy I wouldn't have been still here you know?"
+
+Kenji: "What are we going to do then?"
+
+Kaito: "just watch the detective solve the case."
+
+after credits...
+
+[ Scene 4: Hikari's parents' home ] - Time: (Present) 5:00 pm
+
+Akari left the computer on. The mouse scrolls down from its own to show a continue to the dairy
+
+"6/6/2025
+
+I discovered a way to summon people from the Other World..but its so dangerous that it may lead to DEATH!"</div>
+            </div>
+
+            <div id="episode-7" class="page">
+                <button class="back-btn" onclick="showPage('episodes')">← Back to Episodes</button>
+                
+                <h2>Episode 7: Summoning from the Forgotten Leftovers</h2>
+                <p class="date">Released: November 19, 2025</p>
+                
+                <div class="description-box" style="white-space: pre-line; font-family: 'Courier New', monospace; line-height: 1.8;">What would you choose if you had to choose between losing someone you love's parents? Or the person you love?...or sacrificing yourself for both to stay?
+
+[ Scene 1: In a library ] - Time: (Present) 6:00 pm
+
+Akari and Hikari are both looking in a library for some books that may help, or have any clue.
+
+Hikari in the "religion" section, pulling out a book written on it, "Quran": "Hey, look what I found!"
+
+Akari replies without even facing her, looking in a section titled "Other World" while standing on wooden stairs: "What?"
+
+Hikari: "I felt like this book was glowing!"
+
+Akari is still searching in the section, deadpan, still without facing her: "Books don't glow, Hikari. And stop playing around and help me find what we are searching for."
+
+Hikari: "But really, this book looks different compared to the other religious books."
+
+Akari then faces her, confused: "Religious?" Then he reads the title of the section where she is searching, "Why are you searching in this section?" Then he glances at the book she is holding and starts remembering:
+
+Flashback:
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+
+Akari notices that there is still something small in his plastic bag.
+
+Akari: "Is there still something in this bag?"
+
+Kaito: "oh almost forgot..." pulling out a small book giving it to him written on it Quran and got some cool design "..have this."
+
+Akari holding the book: "what's this?"
+
+Kaito: "this isn't any book so be careful with it and don't put anything on it, okay?"
+
+Akari: "sure but what is it?"
+
+Kaito: "hehe just read it later. You will like it I promise"
+
+Akari puts it on a desk a little confused but considers reading it: "sure. I will consider reading it."
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+
+he gets a strong headache and hits the shelf with his head and falls with a book falling on him titled: "The Forgotten Leftovers - by: Cien Ayanami".
+
+Hikari rushes to him with concern: "are you alright? What happened? Did you remember anything?"
+
+Akari his hand on his forehead while bleeding from his forehead and his lips: "I am okay.. but what was this book that was in your hand?"
+
+Hikari: "its a book I found in the "religion" section"
+
+Akari still his hand on his forehead: "heh. Never knew that my friend was religious.." 
+
+then looks at the book that fell on him.
+
+Akari: "looks like we found the book we where searching for"
+
+[ Scene 2: At home ] - Time: 2:00 am (Past)
+
+Kenji and Kaito sitting on the couch watching T.V.
+
+Kenji: "hey, Shiranami-senpai.. I heard that here we can only affect anything that is under 100 grams was that true?"
+
+Kaito: "Yes."
+
+Kenji: "Then how did Daichi-san hold a knife?"
+
+Kaito goes silent for a moment, then says: "Well, everything got a version of it in this world. Where you can hold it but it won't appear in the Remembered World that you are holding it. For example if you wanted to eat something that weights more than 100g you will hold it and eat it but it won't affect the one in the Remembered World"
+
+Kenji: "oh..."
+
+They continue watching the T.V. silently for a moment then Kenji breaks the silence asking again.
+
+Kenji: "But can't I just hold a pen and write to someone in the Remembered World and communicate? To tell him my name and the existence of all this and stuff"
+
+Kaito: "I don't think that will work"
+
+Kenji: "why?"
+
+Kaito: "you think you can just easily outsmart the universe? I tried it anyway and the pen just became part of this world and didn't affect the other world"
+
+Kenji continues watching silently while thinking of other ways.
+
+[ Scene 3: In a library ] - Time: (Present) 6: 10 pm
+
+Akari and Hikari sitting on a table across each other in the library.
+
+Akari opening the book: "so lets see if this book was useful"
+
+Hikari: "imagine it ends up being a fictional story or something" she says while laughing nervously
+
+Akari: "hopefully not"
+
+The book:
+
+" Title: The Forgotten Leftovers
+
+Writer: Cien Ayanami
+
+Date written: 3/5/2000
+
+As a young scientist interested in parallel worlds, I discovered a parallel world that is different than any other world. And I believe that this one is real with proof! Many scientists for years weren't believing me and mocking my idea so I decided writing this book. I call this other world "The Forgotten Leftovers". This name came from that this world is actually where the forgotten people are kept. The word "Leftovers" came from this universe collecting forgotten people like "leftovers" by other humans. This is very dangerous. If you are reading this book and got a dear friend or a parent you don't want to lose then don't forget his second name. According to my experience, at night, exactly when the clock strikes 12: 00 am the people whose second names are forgotten get deleted by the universe. This started happening very recent around 1986 but not fully sure. Its not so often to happen now and its actually really rare for such a case to happen like only very isolated people get enter this world and after months of isolation. But I believe this will start increasing very soon expecting this to happen in about after 25 years according to the rate of...."
+
+Akari skipping through some pages..
+
+Hikari: "what are you doing?"
+
+Akari: "we don't have time for that we got about only 6 hours"
+
+Hikari: "oh okay"
+
+Akari stops at the chapter named "How to call someone from the Forgotten Leftovers"
+
+"As of my experience of calling someone from the other world, it is really risky since it risks your life! So if you are planning to do it please consider this and be careful.
+
+First step: You need to get a picture of your the person you want to call, if you got a picture you will be able to remember his second name for seconds.
+
+Second step: Write this name on a paper before you forget it.
+
+Third step: Read the name loudly.
+
+I guarantee you that he will appear but it is so risky that either you will risk going to the Forgotten Leftovers replacing him or even dying! And this is the only way to do it"
+
+Hikari: "Wow. I will go now get my parents since I found out how"
+
+Akari stops Hikari while she was walking away holding her from her arm.
+
+Akari says in frustration: "NO! NO WAY I CAN ALLOW THIS!"
+
+Hikari: "What do you want me to do?! Leave my parents?"
+
+Akari: "No. I didn't say that!"
+
+Hikari: "Then? What do you want me to do?"
+
+Akari: "lets search maybe we find another way..."
+
+Hikari interrupting him: "there is no other way. This scientist said it. And you probably won't find any other book about this topic. You forgot? We asked the librarian he said "there is no such book" and this book was full of dust. Moreover, many people would find this crazy so no one would even research in that. And anyway even if there is another book it will be really hard to find and as you said we got only 6 hours and we have no time to waste"
+
+Akari: "then I am going to do this"
+
+Hikari says in rage: "No way! I won't allow this! They are my parents! I am the responsible one! You don't understand the feeling of losing my parents!"
+
+Akari: "No! The problem is I understand and you don't. And because I understand how harsh the feeling is I won't allow you to go through it..."
+
+Hikari pauses for a moment then pulling her arm: "Thanks.. but sorry, Akari. This is my job. And these are my parents to rescue. Please stay out of it."
+
+Then she leaves the library leaving him alone.
+
+After credits...
+
+[ Scene 4: In a library ] - Time: (Present) 10: 00 pm
+
+Akari continued reading in the book after Hikari left then he leaves the library with the book opened on the page:
+
+"There is also a way to make yourself forgotten and go to the world if you want which is..."
+
+the rest of the page is ripped off.</div>
+            </div>
+
+            <!-- Individual Anime Page: Detective Conan -->
+            <div id="anime-detective-conan" class="page">
+                <button class="back-btn" onclick="showPage('anime-list')">← Back to Anime Database</button>
+                
+                <div class="anime-header">
+                    <h3>Detective Conan (Case Closed)</h3>
+                    <span class="status-badge">✨ ONGOING</span>
+                    <div class="genres">
+                        <span class="genre-tag">Mystery</span>
+                        <span class="genre-tag">Detective</span>
+                        <span class="genre-tag">Shounen</span>
+                        <span class="genre-tag">Adventure</span>
+                    </div>
+                </div>
+
+                <h2>Overview</h2>
+                <div class="description-box">
+                    <p><strong>Shinichi Kudo, a brilliant high school detective, is transformed into a child after being poisoned by a mysterious criminal organization.</strong></p>
+                    <p>Taking on the alias "Conan Edogawa," he continues to solve complex cases while living with his childhood friend Ran and her father, private detective Kogoro Mouri. All while searching for the organization that shrunk him and a way to return to his original form.</p>
+                    <p>With his incredible deductive abilities and an arsenal of gadgets from Professor Agasa, Conan tackles murder mysteries, kidnappings, and criminal conspiracies—all while keeping his true identity a secret.</p>
+                </div>
+
+                <h2>Series Information</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>Type</strong>
+                        TV Anime / Manga
+                    </div>
+                    <div class="info-item">
+                        <strong>Status</strong>
+                        Ongoing
+                    </div>
+                    <div class="info-item">
+                        <strong>Episodes</strong>
+                        1100+ episodes
+                    </div>
+                    <div class="info-item">
+                        <strong>First Aired</strong>
+                        January 8, 1996
+                    </div>
+                    <div class="info-item">
+                        <strong>Studio</strong>
+                        TMS Entertainment
+                    </div>
+                    <div class="info-item">
+                        <strong>Creator</strong>
+                        Gosho Aoyama
+                    </div>
+                </div>
+
+                <h2>Main Characters</h2>
+                <div class="news-item">
+                    <h3>Shinichi Kudo / Conan Edogawa</h3>
+                    <p>A brilliant 17-year-old detective who is transformed into a child. As Conan, he continues solving cases while hiding his true identity and searching for a cure.</p>
+                </div>
+                <div class="news-item">
+                    <h3>Ran Mouri</h3>
+                    <p>Shinichi's childhood friend and love interest. A karate champion who remains unaware of Conan's true identity while waiting for Shinichi's return.</p>
+                </div>
+                <div class="news-item">
+                    <h3>Kogoro Mouri</h3>
+                    <p>Ran's father and a private detective. Often put to sleep by Conan to solve cases, earning him the nickname "Sleeping Kogoro."</p>
+                </div>
+                <div class="news-item">
+                    <h3>Ai Haibara</h3>
+                    <p>A former member of the Black Organization who was also transformed into a child. She works with Conan to find an antidote.</p>
+                </div>
+
+                <h2>Notable Story Arcs</h2>
+                <div class="episode-item">
+                    <h3>Black Organization Arc</h3>
+                    <p>The main storyline following Conan's investigation into the mysterious organization that shrunk him, featuring recurring encounters with dangerous members.</p>
+                </div>
+                <div class="episode-item">
+                    <h3>Bourbon Arc</h3>
+                    <p>Introduction of the enigmatic Bourbon, a member of the Black Organization with his own hidden agenda.</p>
+                </div>
+                <div class="episode-item">
+                    <h3>Vermouth Arc</h3>
+                    <p>Featuring the mysterious actress and Black Organization member who has a complex relationship with Conan and his allies.</p>
+                </div>
+            </div>
+
+            <!-- About Page -->
+            <div id="about" class="page">
+                <h2>About Us</h2>
+                <div class="about-section">
+                    <p>
+                        Welcome to the official home of <strong>The Forgotten Leftovers</strong> and our growing anime community! 
+                        We're passionate creators and curators dedicated to bringing you thrilling stories that push the boundaries 
+                        of mystery, horror, and the supernatural.
+                    </p>
+                    <p>
+                        <strong>The Forgotten Leftovers</strong> is our original creation—a mind-bending tale that explores what 
+                        happens when reality itself begins to glitch. Through Akari's eyes, we invite you into a world where 
+                        nothing is certain and the impossible becomes terrifyingly real.
+                    </p>
+                    <p>
+                        Our mission extends beyond just one story. We're building a comprehensive database of anime information, 
+                        from classic detective series like Detective Conan to cutting-edge original content. Whether you're here 
+                        for The Forgotten Leftovers or exploring other anime, we aim to be your go-to source for news, updates, 
+                        and community discussion.
+                    </p>
+                    <p>
+                        We believe in:
+                    </p>
+                    <ul style="margin-left: 30px; margin-bottom: 15px;">
+                        <li>Creating compelling, thought-provoking narratives</li>
+                        <li>Building an engaged and respectful community</li>
+                        <li>Providing timely updates and quality content</li>
+                        <li>Celebrating both new creations and anime classics</li>
+                        <li>Fostering discussion and fan theories</li>
+                    </ul>
+                    <p style="font-weight: bold; color: #0f3460; margin-top: 20px;">
+                        Join us as we unravel mysteries, explore the impossible, and celebrate the art of anime storytelling! 👻
+                    </p>
+                </div>
+            </div>
+
+            <!-- Contact Page -->
+            <div id="contact" class="page">
+                <h2>Contact Us</h2>
+                <div class="about-section">
+                    <p>
+                        Have questions about The Forgotten Leftovers? Want to share your theories? Looking to collaborate? 
+                        We'd love to hear from you!
+                    </p>
+                    <div class="contact-info">
+                        <h3 style="margin-bottom: 15px;">Get In Touch</h3>
+                        <p><strong>Business & Collaboration:</strong> ayanamicien@gmail.com</p>
+                        <p><strong>Report an issue:</strong> ayanamicien@gmail.com</p>
+                        
+                        <h3 style="margin-top: 25px; margin-bottom: 15px;">Connect With Us</h3>
+                        <div class="social-links">
+                            <a href="https://discord.gg/dU3AXXtK">Discord</a>
+                            <a href="https://www.reddit.com/r/TheForgottenLeftovers/">Reddit</a>
+                        </div>
+                    </div>
+                    <p style="margin-top: 20px;">
+                        Join our Discord community to discuss theories, share fan art, and connect with other fans 
+                        of The Forgotten Leftovers. We're active daily and love engaging with our community!
+                    </p>
+                    <p style="margin-top: 15px;">
+                        <strong>Response Time:</strong> We typically respond to inquiries within 24-48 hours. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            document.getElementById(pageId).classList.add('active');
+
+            if (event && event.target.classList.contains('nav-btn')) {
+                event.target.classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showAnimePage(animeId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            document.getElementById('anime-' + animeId).classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showEpisodePage(episodeId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            document.getElementById(episodeId).classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
